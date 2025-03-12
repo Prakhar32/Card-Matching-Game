@@ -35,8 +35,8 @@ public class SelectionStateMachineTests
 
         yield return null;
 
-        option1.Selected();
-        option2.Selected();
+        stateMachine.OptionSelected(option1);
+        stateMachine.OptionSelected(option2);
 
         yield return null;
         Assert.IsFalse(option1 == null);
