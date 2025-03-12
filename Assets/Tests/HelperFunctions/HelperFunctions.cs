@@ -1,6 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
-using Moq;
+
 public class HelperFunctions
 {
     private static Texture2D createTexture()
@@ -33,9 +33,11 @@ public class HelperFunctions
         selected.FlippedDisplaySprite = createSpriteStub();
         selected.CardChoice = new Triangle();
 
-        var setup = new Mock<SelectionStateMachine>();
-        setup.Setup(x => x.OptionSelected(selected)).Callback(() => { });
-        selected.stateMachine = setup.Object;
+        GameObject machine = new GameObject();
+        machine.AddComponent<SelectionStateMachine>();
+        selected.StateMachine = machine.GetComponent<SelectionStateMachine>();
+
+        selected.Button = selected.gameObject.AddComponent<Button>();
         
         return selected;
     }

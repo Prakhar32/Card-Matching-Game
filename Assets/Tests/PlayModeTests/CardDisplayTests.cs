@@ -38,12 +38,14 @@ public class CardDisplayTests
         Assert.IsTrue(selected.GetComponent<Image>().sprite == usualSprite);
     }
 
-    [Test]
-    public void SwitchImageOnSelection()
+    [UnityTest]
+    public IEnumerator SwitchImageOnSelection()
     {
         CardDisplay selected = HelperFunctions.getSelectedCard();
         Sprite flippedSprite = HelperFunctions.createSpriteStub();
         selected.FlippedDisplaySprite = flippedSprite;
+
+        yield return null;
 
         selected.Selected();
         Assert.IsTrue(selected.GetComponent<Image>().sprite == flippedSprite);
