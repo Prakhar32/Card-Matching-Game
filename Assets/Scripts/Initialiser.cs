@@ -10,22 +10,24 @@ public class Initialiser : MonoBehaviour
 
     void Awake()
     {
-        GameObject first = Instantiate<GameObject>(CardPrefab, parent);
-        CardDisplay display = first.GetComponent<CardDisplay>();
-        display.StateMachine = stateMachine;
+        CardDisplay display = createDisplay();
         display.CardChoice = new Circle();
         display.FlippedDisplaySprite = Circle;
 
-        GameObject second = Instantiate<GameObject>(CardPrefab, parent);
-        display = second.GetComponent<CardDisplay>();
-        display.StateMachine = stateMachine;
+        display = createDisplay(); 
         display.CardChoice = new Triangle();
         display.FlippedDisplaySprite = Triangle;
 
-        GameObject third = Instantiate<GameObject>(CardPrefab, parent);
-        display = third.GetComponent<CardDisplay>();
-        display.StateMachine = stateMachine;
+        display = createDisplay();
         display.CardChoice = new Circle();
         display.FlippedDisplaySprite = Circle;
+    }
+
+    private CardDisplay createDisplay()
+    {
+        GameObject card = Instantiate(CardPrefab, parent);
+        CardDisplay display = card.GetComponent<CardDisplay>();
+        display.StateMachine = stateMachine;
+        return display;
     }
 }
