@@ -10,13 +10,13 @@ public class SelectionStateMachineTests
     {
         CardDisplay option1 = HelperFunctions.getSelectedCard();
         CardDisplay option2 = HelperFunctions.getSelectedCard();
-        SelectionStateMachine stateMachine = option1.StateMachine;
-        option2.StateMachine = stateMachine;
 
+        GameObject g = new GameObject();
+        SelectionStateMachine stateMachine = g.AddComponent<SelectionStateMachine>();
         yield return null;
 
-        stateMachine.OptionSelected(option1);
-        stateMachine.OptionSelected(option2);
+        stateMachine.CardSelected(option1);
+        stateMachine.CardSelected(option2);
 
         yield return null;
         Assert.IsTrue(option1 == null);
@@ -28,15 +28,14 @@ public class SelectionStateMachineTests
     {
         CardDisplay option1 = HelperFunctions.getSelectedCard();
         CardDisplay option2 = HelperFunctions.getSelectedCard();
-        SelectionStateMachine stateMachine = option1.StateMachine;
-        option2.StateMachine = stateMachine; 
-        
         option2.CardChoice = new Circle();
 
+        GameObject g = new GameObject();
+        SelectionStateMachine stateMachine = g.AddComponent<SelectionStateMachine>();
         yield return null;
 
-        stateMachine.OptionSelected(option1);
-        stateMachine.OptionSelected(option2);
+        stateMachine.CardSelected(option1);
+        stateMachine.CardSelected(option2);
 
         yield return null;
         Assert.IsFalse(option1 == null);

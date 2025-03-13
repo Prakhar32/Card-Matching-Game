@@ -27,7 +27,7 @@ public class Initialiser : MonoBehaviour
     {
         GameObject card = Instantiate(CardPrefab, parent);
         CardDisplay display = card.GetComponent<CardDisplay>();
-        display.StateMachine = stateMachine;
+        display.response = stateMachine;
         return display;
     }
 }

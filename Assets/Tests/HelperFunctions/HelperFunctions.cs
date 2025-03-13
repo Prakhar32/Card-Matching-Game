@@ -1,3 +1,4 @@
+using Moq;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -33,9 +34,10 @@ public class HelperFunctions
         selected.FlippedDisplaySprite = createSpriteStub();
         selected.CardChoice = new Triangle();
 
-        GameObject machine = new GameObject();
-        machine.AddComponent<SelectionStateMachine>();
-        selected.StateMachine = machine.GetComponent<SelectionStateMachine>();
+        //GameObject machine = new GameObject();
+        //machine.AddComponent<SelectionStateMachine>();
+        var StatemachineSetup = new Mock<SelectionResponse>();
+        selected.response = StatemachineSetup.Object;
 
         selected.Button = selected.gameObject.AddComponent<Button>();
         

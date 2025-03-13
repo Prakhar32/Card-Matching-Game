@@ -1,6 +1,12 @@
 using UnityEngine;
 
-public class SelectionStateMachine : MonoBehaviour
+public interface SelectionResponse
+{
+    void CardSelected(CardDisplay display);
+}
+
+
+public class SelectionStateMachine : MonoBehaviour, SelectionResponse
 {
     private Evaluator _evaluator;
 
@@ -30,7 +36,7 @@ public class SelectionStateMachine : MonoBehaviour
         _currentState = state;
     }
 
-    public void OptionSelected(CardDisplay display)
+    public void CardSelected(CardDisplay display)
     {
         _currentState.OptionSelected(display);
     }

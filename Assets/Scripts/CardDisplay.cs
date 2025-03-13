@@ -9,7 +9,7 @@ public class CardDisplay : MonoBehaviour
     public Sprite FlippedDisplaySprite;
 
     public Choice CardChoice;
-    public SelectionStateMachine StateMachine;
+    public SelectionResponse response;
     public Button Button;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -25,7 +25,7 @@ public class CardDisplay : MonoBehaviour
                 throw new NullReferenceException();
             if (CardChoice == null)
                 throw new NullReferenceException();
-            if (StateMachine == null)
+            if (response == null)
                 throw new NullReferenceException();
             if(Button == null)
                 throw new NullReferenceException();
@@ -43,7 +43,7 @@ public class CardDisplay : MonoBehaviour
     {
         DisplayImage.sprite = FlippedDisplaySprite;
         Button.interactable = false;
-        StateMachine.OptionSelected(this);
+        response.CardSelected(this);
     }
 
     public void Revert()
