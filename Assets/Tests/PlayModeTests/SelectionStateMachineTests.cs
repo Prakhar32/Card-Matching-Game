@@ -12,7 +12,7 @@ public class SelectionStateMachineTests
         CardDisplay option2 = HelperFunctions.getSelectedCard();
 
         GameObject g = new GameObject();
-        SelectionStateMachine stateMachine = g.AddComponent<SelectionStateMachine>();
+        SelectionStateMachine stateMachine = new SelectionStateMachine();
         yield return null;
 
         stateMachine.CardSelected(option1);
@@ -31,7 +31,7 @@ public class SelectionStateMachineTests
         option2.CardChoice = new Circle();
 
         GameObject g = new GameObject();
-        SelectionStateMachine stateMachine = g.AddComponent<SelectionStateMachine>();
+        SelectionStateMachine stateMachine = new SelectionStateMachine();
         yield return null;
 
         stateMachine.CardSelected(option1);

@@ -6,7 +6,7 @@ public interface SelectionResponse
 }
 
 
-public class SelectionStateMachine : MonoBehaviour, SelectionResponse
+public class SelectionStateMachine : SelectionResponse
 {
     private Evaluator _evaluator;
 
@@ -18,7 +18,7 @@ public class SelectionStateMachine : MonoBehaviour, SelectionResponse
 
     private SelectionState _currentState;
 
-    void Start()
+    public SelectionStateMachine()
     {
         _evaluator = new Evaluator();
         initialiseStates();
@@ -46,14 +46,14 @@ public class SelectionStateMachine : MonoBehaviour, SelectionResponse
         bool areSame = _evaluator.Evaluate(Display1.CardChoice, Display2.CardChoice);
         if (areSame)
         {
-            Destroy(Display1.gameObject);
-            Destroy(Display2.gameObject);
+            Display1.Destroy();
+            Display2.Destroy();
         }
 
         else
         {
-            Display1.Revert();
-            Display2.Revert();
+            Display1.DeSelected();
+            Display2.DeSelected();
             Display1 = null;
             Display2 = null;
         }

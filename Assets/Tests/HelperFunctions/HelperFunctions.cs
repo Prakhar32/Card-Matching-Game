@@ -34,9 +34,8 @@ public class HelperFunctions
         selected.FlippedDisplaySprite = createSpriteStub();
         selected.CardChoice = new Triangle();
 
-        //GameObject machine = new GameObject();
-        //machine.AddComponent<SelectionStateMachine>();
         var StatemachineSetup = new Mock<SelectionResponse>();
+        StatemachineSetup.Setup(x => x.CardSelected(selected)).Callback(() => { });
         selected.response = StatemachineSetup.Object;
 
         selected.Button = selected.gameObject.AddComponent<Button>();

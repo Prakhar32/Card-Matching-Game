@@ -46,9 +46,14 @@ public class CardDisplay : MonoBehaviour
         response.CardSelected(this);
     }
 
-    public void Revert()
+    public void DeSelected()
     {
         DisplayImage.sprite = UsualDisplaySprite;
         Button.interactable = true;
+    }
+
+    public void Destroy()
+    {
+        Destroy(gameObject);
     }
 }
